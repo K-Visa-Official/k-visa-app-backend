@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
-import pymysql  
 
-pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -28,9 +26,7 @@ SECRET_KEY = 'django-insecure-&3*9+i3$^rw44x)3_i48%97_m2cqxpv47r6yo+8lb-@o9k78m%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ["*"]
-ALLOWED_HOSTS = ['https://main.d32ocand0g7lt0.amplifyapp.com']
-
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -91,16 +87,9 @@ REST_AUTH = {
     'SESSION_LOGIN': False,
 }
 
-# SIMPLE_JWT = {
-#     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),  # 액세스 토큰 만료 시간
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),     # 리프레시 토큰 만료 시간
-#     'ROTATE_REFRESH_TOKENS': False,
-#     'BLACKLIST_AFTER_ROTATION': True,
-# }
-
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(hours=12),  # 액세스 토큰 만료 시간
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),     # 리프레시 토큰 만료 시간
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),  # 액세스 토큰 만료 시간
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=60),     # 리프레시 토큰 만료 시간
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
 }
@@ -240,32 +229,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.mysql',
-        # 'NAME': 'kvisa',
-        # 'USER': 'root',
-        # 'PASSWORD': 'pass!@12worD',
-        # 'HOST': 'localhost',
-        # 'PORT': '3306',
-        # 'OPTIONS': {
-        #     'charset': 'utf8mb4',
-        #     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        # }
-
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'kvisa_app',
-        'USER': 'admin',
-        'PASSWORD': 'kim12011215',
-        'HOST': 'database-1.cliq0kecaxpp.ap-northeast-2.rds.amazonaws.com',
+        'NAME': 'kvisa',
+        'USER': 'root',
+        'PASSWORD': 'pass!@12worD',
+        'HOST': 'localhost',
         'PORT': '3306',
         'OPTIONS': {
             'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-            # 'auth_plugin': 'mysql_native_password',
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
     }
 }
 
 AUTH_USER_MODEL = 'kvisa.CustomUser'
+
 ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_USERNAME_REQUIRED = False
@@ -275,5 +253,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3002",
-    "https://main.d32ocand0g7lt0.amplifyapp.com"
+    "https://kvisaadmin.vercel.app"
 ]

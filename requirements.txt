@@ -19,6 +19,7 @@ inflection==0.5.1
 jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 Markdown==3.7
+mysqlclient==2.2.6
 oauthlib==3.2.2
 packaging==24.2
 pycparser==2.22
