@@ -12,7 +12,9 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
+import pymysql  
 
+pymysql.install_as_MySQLdb()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -249,19 +251,19 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'kvisa_app',
-        'USER': 'root',
+        'USER': 'admin',
         'PASSWORD': 'kim12011215',
-        'HOST': 'localhost',
+        'HOST': 'database-1.cliq0kecaxpp.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
         'OPTIONS': {
             'charset': 'utf8mb4',
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            # 'auth_plugin': 'mysql_native_password',
         }
     }
 }
 
 AUTH_USER_MODEL = 'kvisa.CustomUser'
-
 ACCOUNT_USER_MODEL_USERNAME_FIELD = "username"
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_USERNAME_REQUIRED = False
@@ -271,5 +273,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3002",
-    "https://kvisaadmin.vercel.app"
+    "https://main.d32ocand0g7lt0.amplifyapp.com/"
 ]
