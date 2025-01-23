@@ -21,7 +21,7 @@ jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 Markdown==3.7
 # mysqlclient==2.2.6
-
+pymysql==1.1.1  # 여기 추가
 gunicorn==22.0.0
 # mysqlclient==2.2.4
 oauthlib==3.2.2
