@@ -256,5 +256,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3002",
-    "https://kvisaadmin.vercel.app"
+    "https://main.d32ocand0g7lt0.amplifyapp.com"
 ]
