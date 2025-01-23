@@ -256,5 +256,6 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3002",
+    "http://127.0.0.1:8000",
     "https://main.d32ocand0g7lt0.amplifyapp.com"
 ]
