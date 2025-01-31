@@ -19,9 +19,9 @@ class UserCertifyView(APIView):
     @extend_schema(
         responses={200: UserSerializer}
     )
-    def put(self, request):
-        phone = phone = request.data.get("phone")  # 🔹 변경됨
-        email = request.data.get("email") 
+    def get(self, request):
+        phone = request.GET.get("phone")
+        email = request.GET.get("email")
 
         if not phone:
             return Response({"error": "phone is required"}, status=400)
