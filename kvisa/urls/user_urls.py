@@ -3,7 +3,8 @@ from ..views.user_views import (
     PostCommentsView,
     PostDetailView,
     PostListView,
-    UserProfileView
+    UserProfileView,
+    UserCertifyView
 )
 from rest_framework.routers import DefaultRouter
 
@@ -17,6 +18,8 @@ user_urlpatterns = [
     path('posts/', PostListView.as_view()),
     path('posts/<int:pk>/', PostDetailView.as_view()),
     path('posts/<int:post_id>/comments/', PostCommentsView.as_view()),
+
+    path('certify/', UserCertifyView.as_view(), name='user-UserCertifyView'),
 ]
 
 user_urlpatterns += router.urls

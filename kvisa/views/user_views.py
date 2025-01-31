@@ -9,6 +9,36 @@ from kvisa.models.comment import Comment
 from kvisa.models.post import Post
 from kvisa.serializers.user_serializers import CommentSerializer, PostSerializer, UserSerializer
 from drf_spectacular.utils import extend_schema
+from kvisa.models.users import CustomUser
+from django.http import JsonResponse
+
+class UserCertifyView(APIView):
+    
+    @extend_schema(
+        responses={200: UserSerializer}
+    )
+    def get(self, request):
+        email = request.GET.get("email")
+        
+        if not email:
+            return Response({"error": "Email is required"}, status=400)
+        
+        print(email)
+
+        certify = CustomUser.objects.filter(email=email)
+        
+        if certify.exists():
+            data = {"certy": "yes"}
+            # print("존재")
+        else:
+            data = {"certy": "no"}
+            print("미존재")
+    
+        # serializer = UserSerializer(request.user)
+        return JsonResponse(data)
+
+
+   
 
 
 class UserProfileView(APIView):
