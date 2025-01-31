@@ -14,8 +14,8 @@ from django.http import JsonResponse
 
 class UserCertifyView(APIView):
     
-    permission_classes = [IsAuthenticated]
-    
+    # permission_classes = [IsAuthenticated]
+
     @extend_schema(
         responses={200: UserSerializer}
     )
@@ -34,8 +34,6 @@ class UserCertifyView(APIView):
         return JsonResponse({"result": "success"})
 
    
-
-
 class UserProfileView(APIView):
     permission_classes = [IsAuthenticated]
 
