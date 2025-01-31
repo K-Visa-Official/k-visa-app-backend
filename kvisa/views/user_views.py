@@ -14,29 +14,24 @@ from django.http import JsonResponse
 
 class UserCertifyView(APIView):
     
+    permission_classes = [IsAuthenticated]
+    
     @extend_schema(
         responses={200: UserSerializer}
     )
-    def get(self, request):
+    def put(self, request):
+        phone = request.GET.get("phone")
         email = request.GET.get("email")
-        
-        if not email:
-            return Response({"error": "Email is required"}, status=400)
-        
-        print(email)
 
-        certify = CustomUser.objects.filter(email=email)
+        if not phone:
+            return Response({"error": "phone is required"}, status=400)
         
-        if certify.exists():
-            data = {"certy": "yes"}
-            # print("존재")
-        else:
-            data = {"certy": "no"}
-            print("미존재")
+        certify = CustomUser.objects.get(email = email)  
+        certify.phone_number = phone
+        certify.save()
     
         # serializer = UserSerializer(request.user)
-        return JsonResponse(data)
-
+        return JsonResponse({"result": "success"})
 
    
 
